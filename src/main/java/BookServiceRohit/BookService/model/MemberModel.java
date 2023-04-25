@@ -6,18 +6,18 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class MemberModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_post")
-    @SequenceGenerator(name = "seq_post",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_post")
+    @SequenceGenerator(name = "seq_post", allocationSize = 1)
     @Column(name = "Id")
     long id;
-    @Column(name = "Name",nullable = false)
+    @Column(name = "Name", nullable = false)
     String name;
 
     @Column(name = "Address")
     String address;
 
-    @Column(name = "Book_Name")
-    String book_name;
+    @OneToOne(cascade =CascadeType.ALL)
+    private BookDetail book_name;
 
     @Column(name = "Mobile_Number")
 
@@ -30,8 +30,7 @@ public class MemberModel {
     public MemberModel() {
     }
 
-    public MemberModel(long id, String name, String address, String book_name, long mobile_number, String pan_number)
-    {
+    public MemberModel(long id, String name, String address, BookDetail book_name, long mobile_number, String pan_number) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -64,11 +63,11 @@ public class MemberModel {
         this.address = address;
     }
 
-    public String getBook_name() {
+    public BookDetail getBook_name() {
         return book_name;
     }
 
-    public void setBook_name(String book_name) {
+    public void setBook_name(BookDetail book_name) {
         this.book_name = book_name;
     }
 

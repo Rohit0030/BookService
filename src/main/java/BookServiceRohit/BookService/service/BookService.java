@@ -48,7 +48,7 @@ public BookRepository repository;
         repository.save(member);
         return "Successfully update name as: "+name;
     }
-    // delete
+    // delete by id
     public String deleteMember(long id)
     {
        try {
