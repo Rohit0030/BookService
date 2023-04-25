@@ -1,7 +1,6 @@
 package BookServiceRohit.BookService.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class MemberModel {
@@ -16,8 +15,10 @@ public class MemberModel {
     @Column(name = "Address")
     String address;
 
+    @Column(name = "Book_Name")
+    String book_name;
     @OneToOne(cascade =CascadeType.ALL)
-    private BookDetail book_name;
+    private BookDetail book_detail;
 
     @Column(name = "Mobile_Number")
 
@@ -30,11 +31,12 @@ public class MemberModel {
     public MemberModel() {
     }
 
-    public MemberModel(long id, String name, String address, BookDetail book_name, long mobile_number, String pan_number) {
+    public MemberModel(long id, String name, String address, String book_name, BookDetail book_detail, long mobile_number, String pan_number) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.book_name = book_name;
+        this.book_detail = book_detail;
         this.mobile_number = mobile_number;
         this.pan_number = pan_number;
     }
@@ -63,12 +65,20 @@ public class MemberModel {
         this.address = address;
     }
 
-    public BookDetail getBook_name() {
+    public String getBook_name() {
         return book_name;
     }
 
-    public void setBook_name(BookDetail book_name) {
+    public void setBook_name(String book_name) {
         this.book_name = book_name;
+    }
+
+    public BookDetail getBook_detail() {
+        return book_detail;
+    }
+
+    public void setBook_detail(BookDetail book_detail) {
+        this.book_detail = book_detail;
     }
 
     public long getMobile_number() {
