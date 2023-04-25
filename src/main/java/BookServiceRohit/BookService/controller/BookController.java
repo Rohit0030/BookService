@@ -48,7 +48,6 @@ public BookService service;
         return service.deleteMember(id);
     }
 
-    //delete All
     @DeleteMapping(value = "/deleteall")
     public String deleteAll() {
         service.deleteAll();
