@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.awt.print.Book;
 
 @Repository
-public interface BookRepository extends JpaRepository<MemberModel,Long> {
+public interface BookRepository extends JpaRepository<MemberModel,Long>
+{
 
 }

@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.sound.midi.MetaMessage;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +32,8 @@ public BookRepository repository;
         }
 
         //get member by id
-        public Optional<MemberModel> findById(long id) {
+        public Optional<MemberModel> findById(long id)
+        {
 
             return repository.findById(id);
         }
@@ -41,26 +41,30 @@ public BookRepository repository;
      // put = update
 
 
-    public String updateMember(long id,  String name){
+    public String updateMember(long id,  String name)
+    {
         MemberModel member= repository.getReferenceById(id);
         member.setName(name);
         repository.save(member);
         return "Successfully update name as: "+name;
     }
     // delete
-    public String deleteMember(long id){
+    public String deleteMember(long id)
+    {
        try {
            repository.deleteById(id);
            return "successfully deleted id: "+id;
 
-       }catch (Exception e){
+            }catch (Exception e)
+       {
            ResponseEntity.status(HttpStatus.NOT_FOUND);
            e.printStackTrace();
        }
             return "*****************  already deleted or not Found  *************** ";
     }
     // delete all
-    public void deleteAll() {
+    public void deleteAll()
+    {
         repository.deleteAll();
     }
 
