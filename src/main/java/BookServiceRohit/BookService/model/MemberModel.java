@@ -1,5 +1,8 @@
 package BookServiceRohit.BookService.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +21,7 @@ public class MemberModel {
     @Column(name = "Book_Name")
     String book_name;
     @OneToOne(cascade =CascadeType.ALL)
+    @JsonManagedReference
     private BookDetail book_detail;
 
     @Column(name = "Mobile_Number")

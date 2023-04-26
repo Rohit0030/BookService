@@ -1,5 +1,8 @@
 package BookServiceRohit.BookService.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,15 +17,19 @@ public class BookDetail {
     String purchase_date;
 
     int days;
+    @OneToOne(mappedBy = "book_detail")
+    @JsonBackReference
+    private MemberModel memberModel;
 
     public BookDetail() {
     }
 
-    public BookDetail(long id, String book_author, String purchase_date, int days) {
+    public BookDetail(long id, String book_author, String purchase_date, int days,MemberModel memberModel) {
         this.id = id;
         this.book_author = book_author;
         this.purchase_date = purchase_date;
         this.days = days;
+        this.memberModel=memberModel;
     }
 
     public long getId() {
@@ -55,5 +62,13 @@ public class BookDetail {
 
     public void setDays(int days) {
         this.days = days;
+    }
+
+    public MemberModel getMemberModel() {
+        return memberModel;
+    }
+
+    public void setMemberModel(MemberModel memberModel) {
+        this.memberModel = memberModel;
     }
 }
